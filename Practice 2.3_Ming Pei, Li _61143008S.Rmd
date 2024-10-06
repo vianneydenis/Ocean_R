@@ -1,0 +1,28 @@
+---
+title: "Practice 2.3 (Ming Pei, Li : 61143008S)"
+author: "Ming Pei Li"
+date: "2024-10-06"
+output: html_document
+---
+
+```{r setup, message = FALSE}
+library (tidyr)
+library (dplyr)
+```
+
+```{r}
+rairuoho <- read.table ("https://www.dipintothereef.com/uploads/3/7/3/5/37359245/rairuoho.txt" ,header = T, sep = "\t", dec = ".") %>%
+  mutate (treatment = gsub (pattern = "nutrient", replacement = "enriched", x = treatment )) %>% 
+  pivot_longer (cols = day3:day8,
+                names_to = "day", 
+                values_to = "length") %>% 
+  mutate_at(vars (day), factor) %>% 
+  mutate(spatial = paste (spatial1, spatial2, sep = "_")) %>%
+  select(-row, -column, -spatial1, -spatial2)
+```
+
+```{r, echo = FALSE}
+rairuoho
+```
+
+
