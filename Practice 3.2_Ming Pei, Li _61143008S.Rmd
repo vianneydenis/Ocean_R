@@ -1,0 +1,41 @@
+---
+title: "Practice 3.2 (Ming Pei, Li : 61143008S)"
+author: "Ming Pei Li"
+date: "2024-10-13"
+output: html_document
+---
+
+```{r setup, message = FALSE}
+library (tidyr)
+library (dplyr)
+```
+
+```{r}
+plants <- c('plant 1','plant 2','plant 3','plant 4','plant 5')
+time.exp <- c('start_experiment', 'end_experiment')
+height <- c(4, 5, 3, 6, 7, 9, 6, 5, 4, 7)
+my.matrix <- matrix (data = height, nrow = 5, ncol = 2)
+my.table <- data.frame (my.matrix, row.names = plants)
+colnames (my.table) <- time.exp
+
+my.table <- my.table %>% 
+  mutate (plants = plants) %>%
+  pivot_longer (cols = c(start_experiment, end_experiment), names_to = "time", values_to = "height") %>% 
+  mutate (time = as.factor (time)) %>%
+  data.frame ()
+
+growth <- (my.table$end_experiment - my.table$start_experiment) / my.table$start_experiment
+
+growth <- list (plants, growth, as.table (cbind (plants, growth)))
+
+start_leaf_area <- c(4, 3, 2, 4, 2)
+end_leaf_area <- c(5, 6, 5, 4.5, 3)
+leaf_area <- data.frame (plants, start_leaf_area, end_leaf_area)
+my.experiment <- list (my.table, growth, leaf_area)
+```
+
+```{r, echo = FALSE}
+print (my.experiment)
+```
+
+
