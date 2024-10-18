@@ -5,7 +5,7 @@ date: "2024-10-18"
 output: html_document
 ---
 
-```{r}
+```{r }
 colors <- c("setosa" = "black", "versicolor" = "#c70039", "virginica" = "#41ba2e")
 pchs <- c("setosa" = 1, "versicolor" = 2, "virginica" = 3)
 lm_iris <- lm (Petal.Width ~ Petal.Length, data = iris)
@@ -21,12 +21,10 @@ plot(x = iris$Petal.Length,
      xlab = "Petal length (cm)",
      ylab = "Petal width (cm)")
 
-legend ("topleft", 
-        legend = c("setosa", "versicolor", "virginica"), 
-        col = c("black","#c70039","#41ba2e"), 
-        pch = 1:3)
+legend ("topleft", legend = c("setosa", "versicolor", "virginica"), col = c("black","#c70039","#41ba2e"), pch = 1:3)
 abline (lm_iris)
 text (x = 5, y = 0.5, "R = 0.96")
 
 dev.off ()
 ```
+
