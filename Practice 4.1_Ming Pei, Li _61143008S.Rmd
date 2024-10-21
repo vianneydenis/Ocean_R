@@ -24,7 +24,13 @@ plot(x = iris$Petal.Length,
 legend ("topleft", legend = c("setosa", "versicolor", "virginica"), col = c("black","#c70039","#41ba2e"), pch = 1:3)
 abline (lm_iris)
 text (x = 5, y = 0.5, "R = 0.96")
-
 dev.off ()
+
+# good, you can try:
+# r2_value <- summary(lm_iris)$r.squared
+# text(5.5, 0.5, labels = paste("R = ", round(sqrt(r2_value), 2)), pos = 4)
+
+
+
 ```
 
